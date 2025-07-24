@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WireGuard to MikroTik Converter</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>WireGuard to MikroTik RouterOS Config Converter</h1>
+        
+        <h2>Input WireGuard Config</h2>
+        <textarea id="inputConfig" placeholder="Paste your WireGuard config here..."></textarea>
+        
+        <h2>Interface Name</h2>
+        <input type="text" id="interfaceName" placeholder="e.g., wg0" value="wg0">
+        
+        <button id="convertBtn">Convert to MikroTik</button>
+        
+        <h2>Output MikroTik Config</h2>
+        <textarea id="outputConfig" placeholder="MikroTik config will appear here..." readonly></textarea>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
