@@ -32,10 +32,10 @@ function convertWireGuardToMikroTik(wgConfig, interfaceName) {
     const addresses = config.Interface.Address.split(',').map(addr => addr.trim());
     const allowedIPs = config.Peer.AllowedIPs.split(',').map(ip => ip.trim());
 
+
     // Resolve endpoint hostname to IP
     const endpointHost = endpoint.split(':')[0];
     const endpointPort = endpoint.split(':')[1];
-    let endpointIP = endpointHost;
     
     // Note: In browser JavaScript, we can't directly resolve DNS, so we'll use the hostname as-is
     // In a real implementation, you might need a backend service to resolve DNS
@@ -118,8 +118,11 @@ function parseWireGuardConfig(configText) {
                 if (value.startsWith('"') && value.endsWith('"')) {
                     value = value.slice(1, -1);
                 }
-                
-                result[currentSection][key] = value;
+                if (key in result[currentSection]) {
+                    result[currentSection][key] += ", "+value;
+                }else{
+                    result[currentSection][key] = value;
+                }
             }
         }
     });
